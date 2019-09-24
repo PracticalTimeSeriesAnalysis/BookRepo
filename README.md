@@ -6,6 +6,8 @@ Comments and corrections are welcome. Please either submit a pull request or con
 
 I would also mention that much of the work on this book relates to earlier tutorials I have given. I link below to some YouTube videos showing these tutorials.
 
+[link test] (http://www.google.com)
+
 ##### General tutorials:
 [Time Series Analysis with Python ] (https://www.youtube.com/watch?v=JNfxr4BQrLk&t=10138s)
 [Time Series Analysis with Python (PyCon 2017) (3 hours)] (https://www.youtube.com/watch?v=zmfe2RaX-14&t=8056s)
