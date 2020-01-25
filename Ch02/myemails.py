@@ -37,5 +37,25 @@ agg_don = (donations.groupby('member')
                     .apply(lambda df: df.amount.resample('W-MON').sum()))
 
 agg_don = agg_don[agg_don != 0]
+agg_don = agg_don.reset_index().set_index('timestamp')
 
-    
+
+lst = []
+for member, member_email in all_email.groupby('member'):
+    member_donations = agg_don.query('member == @member')
+
+    member_email.set_index('week', inplace=True)
+    member_email.sort_index(inplace=True)
+
+    df = pd.merge(member_email, member_donations,
+                  how='left',
+                  left_index=True, right_index=True)
+    df.fillna(0, inplace=True)
+    df['member'] = df.member_x
+    lst.append(df.reset_index()[['member', 'week', 'emailsOpened', 'amount']])
+
+merged_df = pd.concat(lst).set_index('week')
+df = merged_df.query('member == 998')     
+
+df['target'] = df.amount.shift(1)
+df
