@@ -100,7 +100,8 @@ for idx in range(yearJoined.shape[0]):
     join_date = min(join_date, pd.Timestamp('2018-06-01'))
     
     ## user should not receive emails or make donations before joining
-    user_rng = rng[rng > join_date]    
+    ## thank you to Murray M Gillin for reporting errata and suggesting this correction
+    user_rng = rng[rng.start_time > join_date]    
     
     if len(user_rng) < 1:
         continue
