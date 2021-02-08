@@ -1,3 +1,6 @@
+
+## thank you Alex Hagaman!
+
 ## rocket will take 100 time steps
 ts.length <- 100
 
